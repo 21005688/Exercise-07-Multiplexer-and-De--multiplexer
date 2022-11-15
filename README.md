@@ -1,7 +1,10 @@
 # Exercise-07-Multiplexer-and-De-multiplexer
-### AIM: To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+### AIM: 
+To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
+### HARDWARE REQUIRED: 
+– PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED: 
+Quartus prime
 ### THEORY 
 
 ## What are Multiplexer and Demultiplexer?
@@ -47,42 +50,86 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
-
-
+1. Start the module using module projname().
+2. Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+3. Use wire to assign intermediate outputs.
+4. Use and,or and not gates to get the desired output.
+5. End the module.
+6. Generate RTL realization and timing diagrams.
 
 ### PROGRAM 
 /*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: J.DEEPIKA
+RegisterNumber: 212221230016
+```
+```
+
+
+4x1 MULTIPLEXER:
+module MUX(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+wire P,Q,R,S;
+and(P,S0C,S1C,I0);
+and(Q,S0C,S1,I1);
+and(R,S0,S1C,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+```
+
+1x4 MULTIPLEXER:
+```
+
+module DEMUX(Y0,Y1,Y2,Y3,S0,S1,I);
+input S0,S1,I;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
+
+```
 */
+### OUTPUT:
+### 4x1 MULTIPLEXER:
+### RTL LOGIC
 
 
+![P1](https://user-images.githubusercontent.com/94747031/201869355-cae44d03-d761-414a-8924-0cdeca514f03.png)
 
+### TIMING DIGRAMS
 
+![P2](https://user-images.githubusercontent.com/94747031/201869393-ee36eace-8300-4955-8042-a83b8c2d34e7.png)
 
+### TRUTH TABLE
 
-### RTL LOGIC  
+![P3](https://user-images.githubusercontent.com/94747031/201869414-ff6957fa-7401-4300-b7a4-7cb36ba4630d.png)
 
+### 1x4 DE MULTIPLEXER:
 
+### RTL LOGIC
 
+![P4](https://user-images.githubusercontent.com/94747031/201869444-acce09af-2e8c-44d2-8955-45996cae42d1.png)
 
+### TIMING DIGRAMS
 
+![P5](https://user-images.githubusercontent.com/94747031/201869481-03854248-add9-44b3-b2fd-4f53f3b1e73a.png)
 
+### TRUTH TABLE
 
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
+![P6](https://user-images.githubusercontent.com/94747031/201869515-c9777e93-563d-41eb-9d5b-741a21c48b01.png)
 
 
 
 ### RESULTS 
+Hence 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified using verilog programming and its output are validated.
